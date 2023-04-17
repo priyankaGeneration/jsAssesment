@@ -1,0 +1,165 @@
+<html>
+    <head>
+        <title>Form Validation</title>
+        <style type="text/css">
+            body{
+                background-color: beige;
+            }
+            #firstdiv{width:50%;height:100%;background-color: rgba(255, 217, 0, 0.847);float: left;}
+            #seconddiv{width:50%;height:100%;background-color:rgba(60, 188, 216, 0.847) ; float: left;text-align: justify;}
+             #subdiv1{width:95%;height: 80%;margin-top: 20px;margin-left: 10px;padding-left: 20px;padding-top: 10px;}
+             #subdiv2{width:95%;height:10%;;text-align: center;}
+             h1{
+                text-align: center;
+             }
+             .feilds{
+             
+                width:70%;
+                padding-left: 50px;
+                line-height: 2;
+                text-decoration: solid;
+                font-weight:bold;
+                height:50px;
+                position: relative;
+
+             }
+             #submit{
+                line-height: 2;
+              padding-left: 110px;
+              padding-top:35px;
+                height:40px;
+                width:40%;
+
+
+             }
+            .input{
+           
+                width:40%;
+                float:right;
+                margin-right: 140px;
+                margin-top: 5px;
+             
+            
+               
+          
+            }
+
+
+        </style>
+         
+           
+          
+       
+    </head>
+    <body>
+        <div id="firstdiv">
+            <div id="subdiv1"><img src="illustration.svg" alt="illustration image" ></div>
+                 <div id="subdiv2"><p><h2>Start for free and get attractive offers today!</h2></p></div></div>
+        <div id="seconddiv">
+         <div><h1>Sign-Up Form</h1></div>
+
+            
+            <form method="post" name="myform" onsubmit=" return validProcess()" action="newHtml.html">
+         <div class="feilds">  Enter your Name:<div class="input">  <input type="text" id="uname" name="myname" pattern="[a-zA-Z]{3,}" title="only alphabets" required></div></div>
+        <div class="feilds">   password:       <div class="input" ><input type="password"  name="pass"></div></div> 
+        <div class="feilds">   confirm password:<div class="input"><input type="password" name="cpass"></div></div> 
+        <div class="feilds">  Enter Email:      <div class="input">  <input type="text" name="mail" id="mymail"></div></div> 
+        
+        <div class="feilds">  Enter your DOB:    <div class="input"> <input type="date" name="mydate" id="newmine"></div></div> 
+                               
+                               
+        <div class="feilds"> Gender:         <div class="input">  <input type="radio" name="gender" value="m"/>male   
+                                <input type="radio" name="gender" value="f">Female 
+                                <input type="radio" name="gender" value="o">other</div></div> 
+                            <div class="feilds">  Country:<div class="input"> <select name="country">
+                                    <option>Australia</option>
+                                    <option>Germany</option>
+                                    <option>India</option>
+                                    <option>NewZeland</option>
+                                    <option>Canada</option>
+                                    <option>USA</option>
+                                    <option>UAE</option>
+            </select></div></div> 
+             
+        <div class="feilds"> Mobile Number:<div class="input" ><input type="number" name="mobile" id="newmine"></div></div> 
+        
+             
+            <div class="feilds" id="submit"> <input type="submit" name="submit" value="Submit">  </div>                               
+                                                       
+                          
+            
+         
+           <script>
+            
+         
+            
+          function  validProcess(){
+           
+
+            let   username = document.getElementById("uname").value;
+            let   password = document.myform.pass.value;
+            let   confirmPassword = document.myform.cpass.value;
+            let   confirmEmail = document.myform.mail.value;
+            let   mymail=document.myform.mail.value;
+            let   attherate=mymail.indexOf("@");
+            let   atthedot=mymail.lastIndexOf(".");
+            let   currentdate= new Date();
+            let   dob=document.getElementById('newmine').value;
+            let   enteredDate = new Date(dob);
+
+         
+           let    mobile1=(document.myform.mobile.value)
+
+            //name validation
+          
+                if(username==='null'||username===''){
+                    alert("enter valid username")
+                    return false;
+                }
+                //password validation
+
+           
+                if(password.length<6){
+                    alert("enter 6 digits");
+                    return false;
+
+                }
+                if(password!==confirmPassword){
+                    alert("both must be same");
+                    return false;
+                }
+                //Email validation
+           if (attherate<1 || atthedot<attherate+3 || atthedot>=mymail.length)
+                  {
+                     alert( "enter the correct email");
+                     return false;
+                    
+                  }
+                  //date of birth validation
+                  if(isNaN(enteredDate)){
+                    alert('please enter a valid date');
+
+                  }
+                  
+                  if (enteredDate>currentdate)
+                        {
+                           alert( "enter the correct DOB");
+                           return false;
+                        }
+
+                 //mobile validation
+                        if (mobile1.length!==10)
+                  
+                   
+                         {
+                           alert( "enter the correct 10 digits number");
+                           return false;
+                        }      
+                 
+         
+                }
+        </script>
+        
+        </div>
+    </body>
+</html>
